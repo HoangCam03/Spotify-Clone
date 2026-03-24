@@ -1,0 +1,28 @@
+### Monorepo defaults
+**/node_modules/
+**/dist/
+**/.DS_Store
+**/.env
+**/.env.*
+!**/.env.example
+
+### Logs
+**/logs/
+**/*.log
+
+### Vite / React
+**/dist-ssr/
+**/*.local
+
+### IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+### Uploads / runtime
+Spotify-backend/uploads/
+
