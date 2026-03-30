@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "ESNext",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "lib": ["ES2020"],
     "outDir": "./dist",
@@ -16,10 +16,10 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "../../",
     "paths": {
-      "@/*": ["src/*"],
-      "@libs/*": ["../../libs/*"]
+      "@/*": ["services/api-gateway/src/*"],
+      "@spotify/libs/*": ["libs/*"]
     }
   },
   "include": ["src/**/*", "../../libs/**/*"],

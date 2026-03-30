@@ -3,9 +3,9 @@ import cors from "cors";
 import rateLimit from "express-rate-limit";
 import dotenv from "dotenv";
 import { createProxyMiddleware, Options } from "http-proxy-middleware";
-import { authenticate, authorize } from "./middleware/authMiddleware.js";
-import { errorMiddleware } from "@libs/middleware/error.middleware.js";
-import { SERVICES } from "./config/services.js";
+import { authenticate, authorize } from "./middleware/authMiddleware";
+import { errorMiddleware } from "@spotify/libs/middleware/error.middleware";
+import { SERVICES } from "./config/services";
 
 dotenv.config();
 

@@ -2,8 +2,8 @@ import express, { Express, Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import authRoutes from "./routes/auth.routes.js";
-import { errorMiddleware } from "@libs/middleware/error.middleware.js";
+import authRoutes from "./routes/auth.routes";
+import { errorMiddleware } from "@spotify/libs/middleware/error.middleware";
 
 dotenv.config();
 

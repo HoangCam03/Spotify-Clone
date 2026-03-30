@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { catalogController } from '../controllers/catalog.controller.js';
+import { catalogController } from '../controllers/catalog.controller';
 
 const router = Router();
 
@@ -13,3 +13,5 @@ router.get('/tracks/:trackId', catalogController.getTrackById);
 router.post('/tracks', catalogController.createTrack);
 
 export default router;
+
+

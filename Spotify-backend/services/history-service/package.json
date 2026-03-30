@@ -2,12 +2,11 @@
   "name": "spotify-history-service",
   "version": "1.0.0",
   "description": "History Service - Track play events, recently played",
-  "type": "module",
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js",
+    "start": "node --experimental-specifier-resolution=node dist/services/history-service/src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["microservice", "history", "play-events"],
@@ -17,7 +16,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "mongoose": "^8.14.3"
+    "mongoose": "^8.14.3",
+    "@spotify/libs": "file:../../libs"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",

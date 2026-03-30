@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { AuthError, ForbiddenError } from "@libs/errors.js";
-import { verifyAccessToken, TokenPayload } from "@libs/utils/jwt.helper.js";
+import { AuthError, ForbiddenError } from "@spotify/libs/errors";
+import { verifyAccessToken, TokenPayload } from "@spotify/libs/utils/jwt.helper";
 
 export interface AuthRequest extends Request {
   user?: TokenPayload;

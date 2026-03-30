@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import { Track } from '@libs/database/schemas/track.schema.js';
-import { SuccessResponse } from '@libs/response.js';
-import { NotFoundError } from '@libs/errors.js';
+import { Track } from '@spotify/libs/database/schemas/track.schema';
+import { SuccessResponse } from '@spotify/libs/response';
+import { NotFoundError } from '@spotify/libs/errors';
 
 class CatalogController {
   // 1. Lấy danh sách bài hát (Phân trang)

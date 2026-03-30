@@ -2,12 +2,11 @@
   "name": "spotify-user-service",
   "version": "1.0.0",
   "description": "User Service - Profile, settings, follow users",
-  "type": "module",
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js",
+    "start": "node --experimental-specifier-resolution=node dist/services/user-service/src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["microservice", "user", "profile"],
@@ -18,7 +17,8 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.14.3"
+    "mongoose": "^8.14.3",
+    "@spotify/libs": "file:../../libs"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",

@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { User } from '@libs/database/schemas/user.schema.js';
-import { AuthError, ConflictError } from '@libs/errors.js';
-import { SuccessResponse } from '@libs/response.js';
-import { generateTokens, verifyRefreshToken } from '@libs/utils/jwt.helper.js';
+import { User } from '@spotify/libs/database/schemas/user.schema';
+import { AuthError, ConflictError } from '@spotify/libs/errors';
+import { SuccessResponse } from '@spotify/libs/response';
+import { generateTokens, verifyRefreshToken } from '@spotify/libs/utils/jwt.helper';
 
 class AuthController {
   // 1. Đăng ký tài khoản mới

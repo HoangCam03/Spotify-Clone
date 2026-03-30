@@ -2,8 +2,8 @@ import express, { Express, Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import catalogRoutes from "./routes/catalog.routes.js";
-import { errorMiddleware } from "@libs/middleware/error.middleware.js";
+import catalogRoutes from "./routes/catalog.routes";
+import { errorMiddleware } from "@spotify/libs/middleware/error.middleware";
 
 dotenv.config();
 
@@ -47,7 +47,7 @@ const startServer = async () => {
 
   app.listen(PORT, () => {
     console.log(
-      `✅ Catalog Service đang chạy tại http://localhost:${PORT} (${process.env.NODE_ENV})`
+      ` Catalog Service đang chạy tại http://localhost:${PORT} (${process.env.NODE_ENV})`
     );
   });
 };

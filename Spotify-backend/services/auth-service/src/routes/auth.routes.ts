@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { authController } from '../controllers/auth.controller.js';
-import { validate } from '@libs/middleware/validation.middleware.js';
-import { registerSchema, loginSchema } from '../validators/auth.validator.js';
+import { authController } from '../controllers/auth.controller';
+import { validate } from '@spotify/libs/middleware/validation.middleware';
+import { registerSchema, loginSchema } from '../validators/auth.validator';
 
 const router = Router();
 

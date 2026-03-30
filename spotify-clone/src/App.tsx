@@ -31,7 +31,7 @@ const App: React.FC = () => {
   }, [songsStatus, playlistsState.status, dispatch]);
 
   return (
-    <div className="h-screen bg-black">
+    <div className="h-screen bg-black flex flex-col p-2 gap-2 font-sans overflow-hidden text-[#b3b3b3]">
       <Routes>
         <Route path="/signup" element={<Register />} />
         <Route path="/login" element={<Login />} />
@@ -39,12 +39,28 @@ const App: React.FC = () => {
           path="/*"
           element={
             <>
-              <Header className="sticky top-0 left-0 right-0 z-50" />
-              <div className="h-[80%] flex">
+              {/* Top Navigation */}
+              <Header />
+
+              {/* Main Content Area */}
+              <div className="flex-1 flex gap-2 overflow-hidden">
                 <Sidebar />
                 <Display />
               </div>
-              <Player />
+
+              {/* Bottom Promotional Bar for logged-out users */}
+              <div className="h-[75px] w-full px-6 py-3 flex justify-between items-center bg-gradient-to-r from-[#af2896] to-[#509bf5] cursor-pointer hover:scale-[1.01] transition-transform rounded-lg">
+                <div className="text-white">
+                  <p className="text-sm font-bold uppercase tracking-wider mb-1">Xem trước Spotify</p>
+                  <p className="font-semibold text-[15px]">Đăng ký để nghe không giới hạn các bài hát và podcast với quảng cáo không thường xuyên. Không cần thẻ tín dụng.</p>
+                </div>
+                <button className="bg-white text-black text-base font-bold py-3 px-8 rounded-full hover:scale-105 transition hover:-mb-[2px]">
+                  Đăng ký miễn phí
+                </button>
+              </div>
+
+              {/* Keep existing player mechanics around behind scenes or conditionally rendered */}
+              {playerContext?.playStatus && <Player />}
               {track && <audio ref={audioRef} src={track.file} preload="auto"></audio>}
             </>
           }
