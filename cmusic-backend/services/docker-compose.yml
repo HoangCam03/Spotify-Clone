@@ -3,7 +3,7 @@ version: "3.8"
 services:
   mongodb:
     image: mongo:latest
-    container_name: spotify-mongodb
+    container_name: cmusic-mongodb
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin123
@@ -12,19 +12,19 @@ services:
     volumes:
       - mongodb_data:/data/db
     networks:
-      - spotify-network
+      - cmusic-network
 
   api-gateway:
     build:
       context: ../
       dockerfile: services/api-gateway/Dockerfile
-    container_name: spotify-api-gateway
+    container_name: cmusic-api-gateway
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=development
       - GATEWAY_PORT=3000
-      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/spotify?authSource=admin
+      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/cmusic?authSource=admin
       - JWT_SECRET=your_jwt_secret_key_here
       - REFRESH_TOKEN_SECRET=your_refresh_token_secret_here
     depends_on:
@@ -38,143 +38,143 @@ services:
       - search-service
       - admin-service
     networks:
-      - spotify-network
+      - cmusic-network
 
   auth-service:
     build:
       context: ../
       dockerfile: services/auth-service/Dockerfile
-    container_name: spotify-auth-service
+    container_name: cmusic-auth-service
     ports:
       - "3001:3001"
     environment:
       - NODE_ENV=development
       - AUTH_SERVICE_PORT=3001
-      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/spotify?authSource=admin
+      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/cmusic?authSource=admin
       - JWT_SECRET=your_jwt_secret_key_here
       - REFRESH_TOKEN_SECRET=your_refresh_token_secret_here
     depends_on:
       - mongodb
     networks:
-      - spotify-network
+      - cmusic-network
 
   user-service:
     build:
       context: ../
       dockerfile: services/user-service/Dockerfile
-    container_name: spotify-user-service
+    container_name: cmusic-user-service
     ports:
       - "3002:3002"
     environment:
       - NODE_ENV=development
       - USER_SERVICE_PORT=3002
-      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/spotify?authSource=admin
+      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/cmusic?authSource=admin
     depends_on:
       - mongodb
     networks:
-      - spotify-network
+      - cmusic-network
 
   catalog-service:
     build:
       context: ../
       dockerfile: services/catalog-service/Dockerfile
-    container_name: spotify-catalog-service
+    container_name: cmusic-catalog-service
     ports:
       - "3003:3003"
     environment:
       - NODE_ENV=development
       - CATALOG_SERVICE_PORT=3003
-      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/spotify?authSource=admin
+      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/cmusic?authSource=admin
     depends_on:
       - mongodb
     networks:
-      - spotify-network
+      - cmusic-network
 
   playlist-service:
     build:
       context: ../
       dockerfile: services/playlist-service/Dockerfile
-    container_name: spotify-playlist-service
+    container_name: cmusic-playlist-service
     ports:
       - "3004:3004"
     environment:
       - NODE_ENV=development
       - PLAYLIST_SERVICE_PORT=3004
-      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/spotify?authSource=admin
+      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/cmusic?authSource=admin
     depends_on:
       - mongodb
     networks:
-      - spotify-network
+      - cmusic-network
 
   likes-service:
     build:
       context: ../
       dockerfile: services/likes-service/Dockerfile
-    container_name: spotify-likes-service
+    container_name: cmusic-likes-service
     ports:
       - "3005:3005"
     environment:
       - NODE_ENV=development
       - LIKES_SERVICE_PORT=3005
-      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/spotify?authSource=admin
+      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/cmusic?authSource=admin
     depends_on:
       - mongodb
     networks:
-      - spotify-network
+      - cmusic-network
 
   history-service:
     build:
       context: ../
       dockerfile: services/history-service/Dockerfile
-    container_name: spotify-history-service
+    container_name: cmusic-history-service
     ports:
       - "3006:3006"
     environment:
       - NODE_ENV=development
       - HISTORY_SERVICE_PORT=3006
-      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/spotify?authSource=admin
+      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/cmusic?authSource=admin
     depends_on:
       - mongodb
     networks:
-      - spotify-network
+      - cmusic-network
 
   search-service:
     build:
       context: ../
       dockerfile: services/search-service/Dockerfile
-    container_name: spotify-search-service
+    container_name: cmusic-search-service
     ports:
       - "3007:3007"
     environment:
       - NODE_ENV=development
       - SEARCH_SERVICE_PORT=3007
-      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/spotify?authSource=admin
+      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/cmusic?authSource=admin
     depends_on:
       - mongodb
     networks:
-      - spotify-network
+      - cmusic-network
 
   admin-service:
     build:
       context: ../
       dockerfile: services/admin-service/Dockerfile
-    container_name: spotify-admin-service
+    container_name: cmusic-admin-service
     ports:
       - "3008:3008"
     environment:
       - NODE_ENV=development
       - ADMIN_SERVICE_PORT=3008
-      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/spotify?authSource=admin
+      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/cmusic?authSource=admin
     depends_on:
       - mongodb
     networks:
-      - spotify-network
+      - cmusic-network
 
 volumes:
   mongodb_data:
 
 
 networks:
-  spotify-network:
-    name: spotify-network
+  cmusic-network:
+    name: cmusic-network
     driver: bridge
